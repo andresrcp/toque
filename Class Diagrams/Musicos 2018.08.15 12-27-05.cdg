@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Musicos">
+  <ClassDiagramComponents>
+    <Interface name="Afinar" package="instrumentos" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Methods>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="Cuerdas" package="instrumentos" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="opc" type="String" visibility="private"/>
+        <Field name="random" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Instrumento" package="instrumentos" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="afinado" type="boolean" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="isAfinado" returnType="boolean" visibility="public"/>
+        <Method name="setAfinado" returnType="void" visibility="public">
+          <Argument type="boolean" name="afinado"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Percusion" package="instrumentos" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="opc" type="String" visibility="private"/>
+        <Field name="random" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vientos" package="instrumentos" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="opc" type="String" visibility="private"/>
+        <Field name="random" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Voz" package="instrumentos" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="opc" type="String" visibility="private"/>
+        <Field name="random" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Banda" package="musicos" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="grupo" type="int" visibility="private"/>
+        <Field name="banda" type="Musico" visibility="private"/>
+        <Field name="disponibles" type="Musico" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearBanda" returnType="void" visibility="public"/>
+        <Method name="revisarDisp" returnType="int" visibility="public"/>
+        <Method name="getBandaPosi" returnType="Musico" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="tamano" returnType="int" visibility="public"/>
+        <Method name="imprimir" returnType="void" visibility="public">
+          <Argument type="int" name="dispo"/>
+          <Argument type="Musico" name="disponibles"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="ImprimirInfo" package="musicos" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Methods>
+        <Method name="imprimir" returnType="void" visibility="public">
+          <Argument type="int" name="dispo"/>
+          <Argument type="Musico" name="disponibles"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="Musico" package="musicos" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="rol" type="String" visibility="private"/>
+        <Field name="ins" type="Instrumento" visibility="private"/>
+        <Field name="rd" type="double" visibility="private"/>
+        <Field name="disponibilidad" type="boolean" visibility="private"/>
+        <Field name="num" type="int" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isDisponibilidad" returnType="boolean" visibility="public"/>
+        <Method name="nombreInst" returnType="String" visibility="public"/>
+        <Method name="getRol" returnType="String" visibility="public"/>
+        <Method name="setRol" returnType="void" visibility="public">
+          <Argument type="String" name="rol"/>
+        </Method>
+        <Method name="tocar" returnType="String" visibility="public"/>
+        <Method name="afinacion" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Toque" package="musicos" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="musicos.Banda" target="musicos.ImprimirInfo"/>
+    <HasRelation name="banda" source="musicos.Banda" target="musicos.Musico" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="instrumentos.Instrumento" target="instrumentos.Afinar"/>
+    <IsRelation name="is" source="instrumentos.Percusion" target="instrumentos.Instrumento"/>
+    <IsRelation name="is" source="instrumentos.Vientos" target="instrumentos.Instrumento"/>
+    <IsRelation name="is" source="instrumentos.Cuerdas" target="instrumentos.Instrumento"/>
+    <IsRelation name="is" source="instrumentos.Voz" target="instrumentos.Instrumento"/>
+    <HasRelation name="ins" source="musicos.Musico" target="instrumentos.Instrumento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="musicos.Banda" target="musicos.Musico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="musicos.Musico" target="instrumentos.Afinar"/>
+    <UseRelation source="musicos.ImprimirInfo" target="musicos.Musico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="disponibles" source="musicos.Banda" target="musicos.Musico" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
